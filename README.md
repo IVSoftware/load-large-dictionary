@@ -1,4 +1,10 @@
-﻿Consider that this might be what's know as an [XY Problem](https://meta.stackexchange.com/a/66378'] because your question asks how to **load a huge txt file" and one might ask _why would you want to **load** a txt file if it's so huge?**. Consider an alternative where the translation entries are stored on a local SQLite database (an example of a NuGet that makes this simple is `sqlite-net-pcl`). All you need is a class for an entry:
+﻿This "might" be what's known as an [XY Problem](https://meta.stackexchange.com/a/66378') because your question asks how to **load a huge txt file** and one might ask: _Why would you want to **load** a txt file if it's so **huge**?_ 
+
+Consider an alternative where the translation entries are stored on a local SQLite database.
+
+[![screenshot][1]][1]
+
+One example of a NuGet that makes this simple is `sqlite-net-pcl`). All you need is a class for an entry:
 
 ***
 **Translation**
@@ -53,7 +59,7 @@ When the enter key is pressed in the left-hand box, just look up the translation
     }
 
 ***
-**Create Database**
+**Demo: Create Database**
 
 The _first_ time this runs, it creates a large database for demonstration purposes.
 
@@ -80,27 +86,6 @@ then
             textBox1.KeyDown += onKeyDown;
         }
 
-        private void onCheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxDirection.Checked)
-            {
-                label1.Text = "Sinhala";
-                label2.Text = "English";
-            }
-            else
-            {
-                label1.Text = "English";
-                label2.Text = "Sinhala";
-            }
-            if (!string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                var swap = textBox1.Text;
-                textBox1.Text = textBox2.Text;
-                textBox2.Text = swap;
-            }
-        }
-
-
         /// <summary>
         ///  Creates the SQLite database that "usually" will
         ///  exist from the start in this scheme of things.
@@ -125,4 +110,27 @@ then
                 });
             }
         }
+
+        private void onCheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxDirection.Checked)
+            {
+                label1.Text = "Sinhala";
+                label2.Text = "English";
+            }
+            else
+            {
+                label1.Text = "English";
+                label2.Text = "Sinhala";
+            }
+            if (!string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                var swap = textBox1.Text;
+                textBox1.Text = textBox2.Text;
+                textBox2.Text = swap;
+            }
+        }
     }
+
+
+  [1]: https://i.stack.imgur.com/nyK9n.png
